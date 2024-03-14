@@ -18,14 +18,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.myproject.aem</groupId>
-        <artifactId>myproject-aem-project</artifactId>
+        <groupId>com.adobe.aem.guides</groupId>
+        <artifactId>mysite-aem-training</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>myproject-aem-project.core</artifactId>
-    <name>My Project - Core</name>
-    <description>Core bundle for My Project</description>
+    <artifactId>mysite-aem-training.core</artifactId>
+    <name>Mysite Training Project - Core</name>
+    <description>Core bundle for Mysite Training Project</description>
     <build>
         <plugins>
             <plugin>
@@ -166,7 +166,6 @@ Import-Package: javax.annotation;version=0.0.0,*
             <artifactId>org.apache.sling.models.api</artifactId>
         </dependency>
 
-
         <!-- Testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -191,16 +190,16 @@ Import-Package: javax.annotation;version=0.0.0,*
         <dependency>
             <groupId>io.wcm</groupId>
             <artifactId>io.wcm.testing.aem-mock.junit5</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.testing.caconfig-mock-plugin</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.sling</groupId>
+                    <artifactId>org.apache.sling.models.impl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>
             <scope>test</scope>
         </dependency>
         <!-- Required to be able to support injection with @Self and @Via -->

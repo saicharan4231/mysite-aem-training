@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/myproject" mode="merge"/>
-    <filter root="/content/myproject" mode="merge"/>
-    <filter root="/content/dam/myproject" mode="merge">
-        <exclude pattern="/content/dam/myproject(/.*)?"/>
-        <include pattern="/content/dam/myproject/jcr:content(/.*)?"/>
-    </filter>
-    <filter root="/content/dam/myproject/asset.jpg" mode="merge"/>
-    <filter root="/content/experience-fragments/myproject" mode="merge"/>
+    <filter root="/conf/mysite" mode="merge"/>
+    <filter root="/content/mysite" mode="merge"/>
+    <filter root="/content/dam/mysite" mode="merge"/>
+    <filter root="/content/experience-fragments/mysite" mode="merge"/>
 </workspaceFilter>

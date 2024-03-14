@@ -1,23 +1,21 @@
 'use strict';
 
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const path                    = require('path');
+const webpack                 = require('webpack');
+const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
+const TSConfigPathsPlugin     = require('tsconfig-paths-webpack-plugin');
+const CopyWebpackPlugin       = require('copy-webpack-plugin');
+const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 
 const SOURCE_ROOT = __dirname + '/src/main/webpack';
 
-const resolve = {
-    extensions: ['.js', '.ts'],
-    plugins: [new TSConfigPathsPlugin({
-        configFile: './tsconfig.json'
-    })]
-};
-
 module.exports = {
-    resolve: resolve,
+    resolve: {
+        extensions: ['.js', '.ts'],
+        plugins: [new TSConfigPathsPlugin({
+            configFile: './tsconfig.json'
+        })]
+    },
     entry: {
         site: SOURCE_ROOT + '/site/main.ts'
     },
@@ -34,15 +32,26 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
+                        options: {
+                            eslintPath: require.resolve('eslint'),
+                        },
+                        loader: require.resolve('eslint-loader'),
+                    },
+                    {
                         loader: 'ts-loader'
                     },
                     {
-                        loader: 'glob-import-loader',
+                        loader: 'webpack-import-glob-loader',
                         options: {
-                            resolve: resolve
+                            url: false
                         }
                     }
                 ]
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
             },
             {
                 test: /\.scss$/,
@@ -66,11 +75,14 @@ module.exports = {
                     },
                     {
                         loader: 'sass-loader',
+                        options: {
+                            url: false
+                        }
                     },
                     {
-                        loader: 'glob-import-loader',
+                        loader: 'webpack-import-glob-loader',
                         options: {
-                            resolve: resolve
+                            url: false
                         }
                     }
                 ]
@@ -79,17 +91,13 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new ESLintPlugin({
-            extensions: ['js', 'ts', 'tsx']
-        }),
+        new webpack.NoEmitOnErrorsPlugin(),
         new MiniCssExtractPlugin({
             filename: 'clientlib-[name]/[name].css'
         }),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' }
-            ]
-        })
+        new CopyWebpackPlugin([
+            { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' }
+        ])
     ],
     stats: {
         assetsSort: 'chunks',

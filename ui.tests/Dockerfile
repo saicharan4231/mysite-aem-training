@@ -15,7 +15,7 @@
 #
 # DO NOT MODIFY
 #
-FROM node:14-slim
+FROM node:lts-slim
 
 ENV APP_PATH /usr/src/app
 ENV SELENIUM_STARTUP_TIMEOUT 60
@@ -35,11 +35,6 @@ ENV AEM_PUBLISH_PASSWORD admin
 # ENV UPLOAD_URL
 
 RUN apt -qqy update \
-    # Generic dependencies
-    && apt -qqy --no-install-recommends install \
-    python \
-    build-essential \
-    # for wait_for_grid script
     && apt -qqy --no-install-recommends install \
     curl \
     jq
@@ -51,7 +46,7 @@ WORKDIR ${APP_PATH}
 # Copy + Install WDIO project
 ENV TEST_RUN_COMMAND "npm run test-cloud"
 COPY test-module/ ./
-RUN npm ci
+RUN npm install
 
 # Begin CloudManager Convention >>>
 COPY wait-for-grid.sh .

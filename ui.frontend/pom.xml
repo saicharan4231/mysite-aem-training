@@ -22,8 +22,8 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>com.myproject.aem</groupId>
-        <artifactId>myproject-aem-project</artifactId>
+        <groupId>com.adobe.aem.guides</groupId>
+        <artifactId>mysite-aem-training</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -31,9 +31,9 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>myproject-aem-project.ui.frontend</artifactId>
+    <artifactId>mysite-aem-training.ui.frontend</artifactId>
     <packaging>pom</packaging>
-    <name>My Project - UI Frontend</name>
+    <name>Mysite Training Project - UI Frontend</name>
 
 
     <!-- ====================================================================== -->
@@ -61,6 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
