@@ -1,30 +1,29 @@
+<h2 data-sly-test.firstName="${properties.firstName}"> ${firstName}'s Profile </h2>
 
-<h2>${properties.firstName}'s Profile </h2>
-<!--
 <div data-sly-use.childItems="com.adobe.aem.guides.mysite.core.models.ProfileProjectsService">
 	<ul data-sly-list.item="${childItems.projectItems}">
-		<li>${item.projectName}</li>
-        <li>${item.rolesAndResponsiblities}</li>
+		<li>pName: ${item.projectName}</li>
+        <li>PRoles: ${item.rolesAndResponsiblities}</li>
     </ul>
 
-</div> -->
+</div>
 <br/>
 <br/>
 <div data-sly-use.profile="com.adobe.aem.guides.mysite.core.models.ProfileImpl">
     <div>
         <h2>First Name: ${profile.firstName}</h2>
         <h2>Last Name: ${profile.lastName}</h2>
-        <h2>Profile Description: ${profile.profileDesc}</h2>
+        <h2>Profile Description: ${profile.profileDescription}</h2>
 		<h2>Age: ${profile.age}</h2>
         <h2>Department: ${profile.department}</h2>
         <h2>Skillset: ${profile.skills}</h2>
+        <ol data-sly-list.skill="${profile.skills}">
+			<li> <h2>${skill}</h2> </li>
+        </ol>
+        <div data-sly-list.item="${profile.projects.listChildren}">
+        	<h2>Project Name: ${item.projectName}</h2>
+        	<h2>Project Roles: ${item.roles}</h2>
+    	</div>
     </div>
 </div>
 <br/>
-<div data-sly-use.projectList="com.adobe.aem.guides.mysite.core.models.ProfileProjectsSlingModel">
-    <div data-sly-list.item="${projectList.projects.listChildren}">
-        <h2>Project Name: ${item.projectName}</h2>
-        <h2>Project Roles: ${item.roles}</h2>
-    </div>
-</div>
-

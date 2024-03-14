@@ -28,6 +28,10 @@ public class ProfileImpl implements Profile {
     @Inject
     String[] skills;
 
+    @Inject
+    @Optional
+    Resource projects;
+
     @Override
     public String getFirstName() {
         // TODO Auto-generated method stub
@@ -41,7 +45,7 @@ public class ProfileImpl implements Profile {
     }
 
     @Override
-    public String ProfileDescription() {
+    public String getProfileDescription() {
         // TODO Auto-generated method stub
         return profileDesc;
     }
@@ -62,6 +66,12 @@ public class ProfileImpl implements Profile {
     public String[] getSkills() {
         // TODO Auto-generated method stub
         return skills;
+    }
+
+    @Override
+    public Resource getProjects() {
+        // TODO Auto-generated method stub
+        return projects;
     }
 
 }
