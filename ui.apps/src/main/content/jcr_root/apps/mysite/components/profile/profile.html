@@ -73,6 +73,10 @@ ${true} ${'abcdef'} ${"abcdef"}
     <h2> Word 'Sightly' is ${shelper.length} characters long. </h2>
 </div>
 
+<div data-sly-use.evenodd="${'EvenOdd' @ number='11'}">
+	<span data-sly-test='${evenodd.isEven}'>Number is even</span>
+	<span data-sly-test='${!evenodd.isEven}'>Number is odd</span>
+</div>
 
 
 
