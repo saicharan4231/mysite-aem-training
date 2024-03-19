@@ -18,4 +18,6 @@ public interface Profile {
 
     public Resource getProjects();
 
+    public Resource getBooksDetails();
+
 }

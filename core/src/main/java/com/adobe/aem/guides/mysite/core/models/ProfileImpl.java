@@ -32,6 +32,10 @@ public class ProfileImpl implements Profile {
     @Optional
     Resource projects;
 
+    @Inject
+    @Optional
+    Resource booksDetails;
+
     @Override
     public String getFirstName() {
         // TODO Auto-generated method stub
@@ -72,6 +76,12 @@ public class ProfileImpl implements Profile {
     public Resource getProjects() {
         // TODO Auto-generated method stub
         return projects;
+    }
+
+    @Override
+    public Resource getBooksDetails() {
+        // TODO Auto-generated method stub
+        return booksDetails;
     }
 
 }

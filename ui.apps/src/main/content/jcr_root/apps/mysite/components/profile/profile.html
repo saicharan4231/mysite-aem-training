@@ -1,7 +1,10 @@
+
+<div data-sly-test.author="${wcmmode.edit || wcmmode.design}">[Configure Profile Component]</div>
+
 <h2 data-sly-test.firstName="${properties.firstName}"> ${firstName}'s Profile </h2>
 
 <div data-sly-use.childItems="com.adobe.aem.guides.mysite.core.models.ProfileProjectsService">
-	<ul data-sly-list.item="${childItems.projectItems}">
+	<ul data-sly-list="${childItems.projectItems}">
 		<li>pName: ${item.projectName}</li>
         <li>PRoles: ${item.rolesAndResponsiblities}</li>
     </ul>
@@ -10,20 +13,28 @@
 <br/>
 <br/>
 <div data-sly-use.profile="com.adobe.aem.guides.mysite.core.models.ProfileImpl">
-    <div>
-        <h2>First Name: ${profile.firstName}</h2>
-        <h2>Last Name: ${profile.lastName}</h2>
-        <h2>Profile Description: ${profile.profileDescription}</h2>
-		<h2>Age: ${profile.age}</h2>
-        <h2>Department: ${profile.department}</h2>
-        <h2>Skillset: ${profile.skills}</h2>
-        <ol data-sly-list.skill="${profile.skills}">
+    <div class="profile">
+        <h2 class="first-name">First Name: ${profile.firstName}</h2>
+        <h2 class="last-name">Last Name: ${profile.lastName}</h2>
+        <p class="profile-description">Profile Description: ${profile.profileDescription}</p>
+		<h2 class="age">Age: ${profile.age}</h2>
+        <h2 class="department">Department: ${profile.department}</h2>
+        <h2 class="skill-set">Skillset: ${profile.skills}</h2>
+        <ol class="skill-set-list" data-sly-list.skill="${profile.skills}">
 			<li> <h2>${skill}</h2> </li>
         </ol>
-        <div data-sly-list="${profile.projects.listChildren}">
-        	<h2>Project Name: ${item.projectName}</h2>
-        	<h2>Project Roles: ${item.roles}</h2>
+        <div class="projects" data-sly-list="${profile.projects.listChildren}">
+        	<h2 class="project-name">Project Name: ${item.projectName}</h2>
+        	<h2 class="project-roles">Project Roles: ${item.roles}</h2>
     	</div>
+        <div data-sly-list="${profile.bookDetails.listChildren}">
+
+                <h2>Book Name : ${item.bookname}</h2> 
+        
+                <h2>Book Subject : ${item.booksubject}</h2> 
+
+                <h2>Book PublishYear : ${item.publishyear}</h2>
+        </div>
     </div>
 </div>
 <br/>
@@ -35,13 +46,9 @@
 
 <p> All the content to be dragged and dropped by author goes here </p>
 
-${true} ${'abcdef'} ${"abcdef"}
-
 <h2> Logical AND: ${firstName && varOne} </h2>
 
 <h2> Logical OR: ${firstName || varOne} </h2>
-
- ${myVar @ optOne='Hello'}
 
 <div data-sly-text="${properties.profileDesc}" >
 	Description no USe
@@ -49,9 +56,6 @@ ${true} ${'abcdef'} ${"abcdef"}
 
 
 <h1>Summary Page</h1>
-<div data-sly-test="${true}" >
-	Detailed description…
-</div>
 
 <div data-sly-test.showReturns="${x || y }">Returns Data</div>
 <div data-sly-test="${ !showReturns}">Click here to view Returns Data</div>
@@ -73,10 +77,6 @@ ${true} ${'abcdef'} ${"abcdef"}
     <h2> Word 'Sightly' is ${shelper.length} characters long. </h2>
 </div>
 
-<div data-sly-use.evenodd="${'EvenOdd' @ number='11'}">
-	<span data-sly-test='${evenodd.isEven}'>Number is even</span>
-	<span data-sly-test='${!evenodd.isEven}'>Number is odd</span>
-</div>
 
 
 

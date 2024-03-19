@@ -15,7 +15,7 @@ public class ProfileProjectsService extends WCMUsePojo {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private List<ProfileProjects> projectItems = new ArrayList<ProfileProjects>();
+    private List<Project> projectItems = new ArrayList<Project>();
 
     @Override
     public void activate() throws Exception {
@@ -44,14 +44,14 @@ public class ProfileProjectsService extends WCMUsePojo {
                 //get grandchildnode
                 Node item = ni2.nextNode();
                 logger.info("GrandChild Path is " + item.getPath());
-                //Converting Node objects to ProjectProfile Objects
-                ProfileProjects pp = new ProfileProjects();
+                //Converting Node objects to Profile Objects
+                Project project = new Project();
                 String projectName = item.getProperty("projectName").getString();
-                pp.setProjectName(projectName);
+                project.projectName = projectName;
                 String roles = item.getProperty("roles").getString();
-                pp.setRolesAndResponsibilities(roles);
+                project.roles = roles;
 
-                projectItems.add(pp);
+                projectItems.add(project);
             }
             
         } catch (Exception e) {
