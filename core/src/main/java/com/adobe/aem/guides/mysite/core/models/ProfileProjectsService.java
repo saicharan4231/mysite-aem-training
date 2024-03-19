@@ -17,6 +17,10 @@ public class ProfileProjectsService extends WCMUsePojo {
 
     private List<Project> projectItems = new ArrayList<Project>();
 
+    public List<Project> getProjectItems() {
+        return projectItems;
+    }
+
     @Override
     public void activate() throws Exception {
         // This is getting the profile node in content
@@ -47,11 +51,13 @@ public class ProfileProjectsService extends WCMUsePojo {
                 //Converting Node objects to Profile Objects
                 Project project = new Project();
                 String projectName = item.getProperty("projectName").getString();
-                project.projectName = projectName;
+                project.setProjectName(projectName);
                 String roles = item.getProperty("roles").getString();
-                project.roles = roles;
-
-                projectItems.add(project);
+                project.setRoles(roles);
+                logger.info("project details is " + project.getProjectName() + " " + project.getRoles());
+                if(project !=null) {
+                    projectItems.add(project);
+                }
             }
             
         } catch (Exception e) {

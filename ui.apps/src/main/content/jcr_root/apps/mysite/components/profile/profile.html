@@ -3,10 +3,10 @@
 
 <h2 data-sly-test.firstName="${properties.firstName}"> ${firstName}'s Profile </h2>
 
-<div data-sly-use.childItems="com.adobe.aem.guides.mysite.core.models.ProfileProjectsService">
-	<ul data-sly-list="${childItems.projectItems}">
+<div data-sly-use.projectItems="com.adobe.aem.guides.mysite.core.models.ProfileProjectsService">
+	<ul data-sly-list="${projectItems.projectItems}">
 		<li>pName: ${item.projectName}</li>
-        <li>PRoles: ${item.rolesAndResponsiblities}</li>
+        <li>PRoles: ${item.roles}</li>
     </ul>
 
 </div>
