@@ -43,12 +43,10 @@ public class DemoServiceAImpl implements DemoService {
 
     @Override
     public Iterator<Page>  getPages() {
-        LOG.info("inside getPages Method");
         try {
             ResourceResolver resourceResolver= ResolverUtil.newResolver(resourceResolverFactory);
             PageManager pageManager=resourceResolver.adaptTo(PageManager.class);
-            Page page=pageManager.getPage("/content/mysite/us/en/");
-            LOG.info("Inside DemoServiceAImpl for childPages");
+            Page page=pageManager.getPage("/content/mysite/us/en");
             Iterator<Page> pages=page.listChildren();
             return pages;
         } catch (LoginException e) {
