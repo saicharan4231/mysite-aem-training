@@ -7,8 +7,7 @@ $(document).ready(function () {
       dataType: "text",
       success: function (response) {
         // var result=  JSON.stringify(response);
-
-        document.querySelector("#pagetitle").value = response;
+        //document.querySelector("#pagetitle").value = response;
         window.alert("Servlet called! \n  " + response);
       },
       error: function (xhr, status, error) {
