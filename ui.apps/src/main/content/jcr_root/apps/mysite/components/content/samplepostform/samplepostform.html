@@ -1,0 +1,17 @@
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+    data-sly-call="${clientlib.css @ categories='mysiteform.base'}" />
+*****************************
+<div class="post-call">
+    <form id="nameForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <button type="button" id="postbtn_submit">Submit</button>
+    </form>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+    data-sly-call="${clientlib.js @ categories='mysiteform.base'}" />
+
+
+
+**************************************************

@@ -1,0 +1,21 @@
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+    data-sly-call="${clientlib.css @ categories='mysiteform.base'}" />
+*****************************
+<div class="get-call">
+    <div class="form-group first_division">
+        <div class="col-sm-offset-3 col-sm-6 m-t-15">
+            <input type="button" id="btn_submit" value="KNOW PAGE TITLE">
+        </div>
+    </div>
+
+    <div>
+        <input id="pagetitle" type="text"></input>
+    </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+    data-sly-call="${clientlib.js @ categories='mysiteform.base'}" />
+
+
+
+**************************************************
